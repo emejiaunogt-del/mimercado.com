@@ -427,7 +427,7 @@ def publicar():
     if request.method == "POST":
         nombre = request.form.get("nombre")
         apellido = request.form.get("apellido")
-        correo = request.form.get("correo")
+        correo = request.form.get("correo") or None
         celular = request.form.get("celular")
 
         id_tipo = request.form.get("id_tipo") or None

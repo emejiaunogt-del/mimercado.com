@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Publicación</title>
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      padding: 20px 26px 40px;
+    }
+    .header-bar{
+      background:#ffffff;
+      border-radius:14px;
+      padding:10px 16px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      max-width:900px;
+      margin:0 auto 18px auto;
+      box-shadow:0 12px 34px rgba(15,23,42,0.03);
+    }
+    .wrapper{
+      max-width: 900px;
+      margin: 12px auto 30px auto;
+      padding-bottom:30px;
+    }
+    .section-card{
+      background:#ffffff;
+      border:1px solid #e5e7eb;
+      border-radius:16px;
+      box-shadow:0 4px 12px rgba(15,23,42,0.03);
+      margin-bottom:18px;
+    }
+    .section-title{
+      font-weight:600;
+      padding:14px 18px 6px 18px;
+      color:#0f172a;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .section-body{
+      padding:10px 18px 18px 18px;
+      display:grid;
+      gap:14px;
+    }
+    .row-two-cols{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:12px;
+    }
+    input, select, textarea{
+      width:100%;
+      padding:8px 10px;
+      border:1px solid #d1d5db;
+      border-radius:10px;
+      font-size:14px;
+    }
+    textarea{min-height:110px; resize:vertical;}
+    label{font-size:13px; color:#0f172a; margin-bottom:4px; display:block;}
+    .primary-btn{
+      background:#2563eb;
+      color:white;
+      padding:10px 18px;
+      border:none;
+      border-radius:9999px;
+      font-weight:600;
+      cursor:pointer;
+    }
+    .img-preview-grid{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .img-preview-grid img{
+      width:120px;
+      border-radius:10px;
+      border:1px solid #e5e7eb;
+    }
+    .radio-inline{display:flex; gap:10px; margin-top:4px;}
+  </style>
+</head>
+<body>
+  <div class="header-bar">
+    <img src="/static/img/mimercado-logo.png" alt="MiMercado" style="height:40px;">
+    <h2 style="margin:0;">Editar Publicación</h2>
+  </div>
+  <div class="wrapper">
+    <form action="" method="post" enctype="multipart/form-data">
+      <div class="section-card">
+        <div class="section-title">Datos del vendedor <span style="background:#eff6ff; color:#2563eb; padding:2px 7px; border-radius:999px; font-size:11px;">1</span></div>
+        <div class="section-body row-two-cols">
+          <div>
+            <label>Nombre</label>
+            <input name="nombre" value="{{ usuario[0] if usuario else '' }}">
+          </div>
+          <div>
+            <label>Apellido</label>
+            <input name="apellido" value="{{ usuario[1] if usuario else '' }}">
+          </div>
+          <div>
+            <label>Correo</label>
+            <input type="email" name="correo" value="{{ usuario[2] if usuario else '' }}">
+          </div>
+          <div>
+            <label>Celular</label>
+            <input name="celular" value="{{ usuario[3] if usuario else '' }}">
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title">Datos del producto / servicio <span style="background:#eff6ff; color:#2563eb; padding:2px 7px; border-radius:999px; font-size:11px;">2</span></div>
+        <div class="section-body">
+          <div class="row-two-cols">
+            <div>
+              <label>¿Qué vas a publicar?</label>
+              <select name="id_tipo" id="tipo" required>
+                <option value="">-- Seleccione --</option>
+                {% for t in tipos %}
+                  <option value="{{ t[0] }}" {% if publicacion[2] == t[0] %}selected{% endif %}>{{ t[1] }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div>
+              <label>Título</label>
+              <input name="titulo" value="{{ publicacion[7] }}" required>
+            </div>
+          </div>
+          <div>
+            <label>Descripción</label>
+            <textarea name="descripcion" required>{{ publicacion[8] }}</textarea>
+          </div>
+          <div class="row-two-cols">
+            <div>
+              <label>Precio</label>
+              <input type="number" step="0.01" name="precio" value="{{ publicacion[9] }}">
+            </div>
+            <div>
+              <label>Moneda</label>
+              <div class="radio-inline">
+                <label><input type="radio" name="moneda" value="Q" {% if publicacion[10] == "Q" %}checked{% endif %}> Q</label>
+                <label><input type="radio" name="moneda" value="$" {% if publicacion[10] == "$" %}checked{% endif %}> $</label>
+              </div>
+            </div>
+          </div>
+          <div class="row-two-cols">
+            <div>
+              <label>Categoría</label>
+              <select name="id_categoria" id="categoria" required>
+                <option value="">-- Seleccione --</option>
+                {% for c in categorias %}
+                  <option value="{{ c[0] }}" {% if publicacion[3] == c[0] %}selected{% endif %}>{{ c[1] }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div>
+              <label>Subcategoría</label>
+              <select name="id_sub_categoria" id="subcategoria" required>
+                <option value="">-- Seleccione --</option>
+                {% for s in subcategorias %}
+                  <option value="{{ s[0] }}" data-categoria="{{ s[1] }}" {% if publicacion[4] == s[0] %}selected{% endif %}>{{ s[2] }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="row-two-cols">
+            <div>
+              <label>Marca</label>
+              <select name="id_marca" id="marca">
+                <option value="">-- Seleccione --</option>
+                {% for m in marcas %}
+                  <option value="{{ m[0] }}" data-subcat="{{ m[2] }}" {% if publicacion[5] == m[0] %}selected{% endif %}>{{ m[1] }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div>
+              <label>Estado</label>
+              <select name="id_estado" id="estado">
+                <option value="">-- Seleccione --</option>
+                {% for e in estados %}
+                  <option value="{{ e[0] }}" {% if publicacion[6] == e[0] %}selected{% endif %}>{{ e[1] }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title">Imágenes actuales</div>
+        <div class="section-body">
+          {% if imagenes %}
+            <div class="img-preview-grid">
+              {% for img in imagenes %}
+              <div>
+                <img src="{{ img[1] }}" alt="img">
+              </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p style="color:#6b7280;">Esta publicación no tiene imágenes.</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-title">Agregar más imágenes</div>
+        <div class="section-body">
+          <label>Imágenes (hasta 10)</label>
+          <input type="file" name="imagenes" multiple>
+          <small>Puedes dejar esto vacío si no quieres cambiar las imágenes.</small>
+        </div>
+      </div>
+
+      <button type="submit" class="primary-btn">Guardar cambios</button>
+      <a href="{{ url_for('admin_publicaciones') }}" style="margin-left:8px;">Cancelar</a>
+    </form>
+  </div>
+
+  <script>
+    const selCat = document.getElementById('categoria');
+    const selSub = document.getElementById('subcategoria');
+    const selMarca = document.getElementById('marca');
+
+    function filtrarSub() {
+      const cat = selCat.value;
+      Array.from(selSub.options).forEach(opt => {
+        if (!opt.value) return;
+        const catOpt = opt.getAttribute('data-categoria');
+        opt.style.display = (cat === "" || cat === catOpt) ? "" : "none";
+      });
+    }
+    function filtrarMarca() {
+      const sub = selSub.value;
+      Array.from(selMarca.options).forEach(opt => {
+        if (!opt.value) return;
+        const subOpt = opt.getAttribute('data-subcat');
+        opt.style.display = (sub === "" || sub === subOpt) ? "" : "none";
+      });
+    }
+    if (selCat) {
+      selCat.addEventListener('change', () => { filtrarSub(); filtrarMarca(); });
+      selSub.addEventListener('change', filtrarMarca);
+      // primera carga
+      filtrarSub();
+      filtrarMarca();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nueva Publicación</title>
+  <style>
+body{
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      padding: 20px 26px 40px;
+    }
+    .header-bar{
+      background:#ffffff;
+      border-radius:14px;
+      padding:10px 16px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      box-shadow:0 4px 16px rgba(15,23,42,0.04);
+      margin-bottom:16px;
+    }
+    .logo-block{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:220px;
+    }
+    .logo-img-full{
+      height:56px;
+      object-fit:contain;
+    }
+
+    .wrapper{
+      max-width: 900px;
+      margin: 12px auto 30px auto;
+    }
+    h1{
+      margin-bottom: 20px;
+      font-size: 26px;
+    }
+    .section-card{
+      background: #fff;
+      border-radius: 14px;
+      padding: 18px 20px 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 12px rgba(15,23,42,0.05);
+    }
+    .section-title{
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title span.line{
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
+    }
+    /* vendedor */
+    .form-grid-vendedor{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px 22px;
+    }
+    .form-grid-vendedor > div input{
+      max-width: 220px;
+    }
+    /* producto */
+    .form-grid-producto{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 16px;
+    }
+    label{
+      display: block;
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 4px;
+      color: #1f2937;
+    }
+    input, select, textarea{
+      width: 100%;
+      padding: 7px 9px;
+      border: 1px solid #d1d5db;
+      border-radius: 7px;
+      font-size: 13px;
+      background: #fff;
+    }
+    textarea{min-height: 80px; resize: vertical;}
+    .radio-inline{
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin-top: 4px;
+    }
+    .money-option{
+      display:flex;
+      align-items:center;
+      gap:4px;
+    }
+    .row-two-cols{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 16px;
+    }
+    .actions{
+      text-align: right;
+      margin-top: 10px;
+    }
+    .btn-primary{
+      background: #2563eb;
+      border: none;
+      color: #fff;
+      padding: 9px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .link-back{
+      margin-right: 12px;
+      font-size: 13px;
+    }
+    small{
+      font-size: 11px;
+      color: #6b7280;
+    }
+    @media(max-width: 720px){
+      .form-grid-vendedor, .form-grid-producto, .row-two-cols{
+        grid-template-columns: 1fr;
+      }
+      .form-grid-vendedor > div input{
+        max-width: 100%;
+      }
+      .actions{text-align:left;}
+    }
+  
+    .logo-top{
+      text-align:left;
+      margin-bottom:10px;
+    }
+    .logo-top img{
+      height:58px;
+    }
+
+  
+    
+    
+    
+    
+    
+    
+    
+    .top-bar-logo{
+      background:#ffffff;
+      border-radius:14px;
+      padding:6px 16px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      box-shadow:0 4px 16px rgba(15,23,42,0.04);
+      margin:14px 20px 12px 20px;
+      min-height:68px;
+    }
+    .top-bar-logo img{
+      height:54px;
+      display:block;
+    }
+    
+.top-bar-logo img{
+      height:54px;
+      display:block;
+    }
+    
+.top-bar-logo img{
+      height:58px;
+      display:block;
+    }
+    
+.top-bar-logo img{
+      height:58px;
+      display:block;
+    }
+    
+.top-bar-logo img{
+      height:62px;
+      display:block;
+    }
+    .wrapper{
+      max-width: 900px;
+      margin: 12px auto 30px auto;
+    }
+    
+    
+
+.wrapper{
+      max-width: 900px;
+      margin: 12px auto 30px auto;
+      padding-bottom:30px;
+    }
+
+  
+    .section-card{
+      background:#ffffff;
+      border:1px solid #e5e7eb;
+      border-radius:16px;
+      box-shadow:0 8px 20px rgba(15,23,42,0.03);
+      margin-bottom:20px;
+      overflow:hidden;
+    }
+    .section-title{
+      background:#f3f7ff;
+      padding:14px 18px 10px;
+      font-weight:700;
+      font-size:14px;
+      color:#0f172a;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .section-title .tag-pill{
+      background:#dbeafe;
+      color:#0f172a;
+      padding:2px 10px 3px;
+      border-radius:9999px;
+      font-size:11px;
+      font-weight:600;
+    }
+    .form-grid-vendedor,
+    .form-grid-producto{
+      padding:14px 18px 16px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:14px 16px;
+    }
+    .form-grid-producto{
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+  
+  
+    .page-title{
+      font-size:28px;
+      margin:0;
+      margin-left:540px; /* pushes it left to match formulario */
+      font-weight:700;
+    }
+  
+    .top-publish{
+      margin-left:auto;
+      background:#0f172a;
+      color:#fff;
+      border:none;
+      padding:8px 16px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:600;
+      font-size:13px;
+    }
+    .top-publish:hover{
+      opacity:0.9;
+    }
+  
+    .img-preview-grid{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .img-thumb{
+      width:90px;
+      height:90px;
+      border:2px solid rgba(15,23,42,0.04);
+      border-radius:12px;
+      overflow:hidden;
+      position:relative;
+      background:#fff;
+      box-shadow:0 2px 6px rgba(15,23,42,0.03);
+      cursor:pointer;
+    }
+    .img-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .cover-badge{
+      position:absolute;
+      top:4px;
+      left:4px;
+      background:#0f172a;
+      color:#fff;
+      font-size:10px;
+      padding:2px 6px;
+      border-radius:999px;
+      display:none;
+    }
+    .img-thumb.cover .cover-badge{
+      display:block;
+    }
+    .cover-hint{
+      font-size:12px;
+      color:#4b5563;
+      margin-top:6px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="header-bar">
+    <div class="logo-block">
+      <a href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='img/mimercado-logo.png') }}" alt="mimercado.com" class="logo-img-full">
+      </a>
+    </div>
+    <h1 class="page-title">Nueva Publicación</h1>
+  </div>
+
+
+  <div class="wrapper">
+    
+
+
+    <form id="form-publicacion" method="post" enctype="multipart/form-data">
+
+      <!-- DATOS VENDEDOR -->
+      <div class="section-card">
+        <div class="section-title">
+          Datos del vendedor <span class="tag-pill">1</span>
+          <span class="line"></span>
+        </div>
+        <div class="form-grid-vendedor">
+          <div>
+            <label>Nombre</label>
+            <input name="nombre" required>
+          </div>
+          <div>
+            <label>Apellido</label>
+            <input name="apellido" required>
+          </div>
+          <div>
+            <label>Correo</label>
+            <input type="email" name="correo">
+          </div>
+          <div>
+            <label>Celular</label>
+            <input name="celular"
+                   required
+                   pattern="\d{8}"
+                   maxlength="8"
+                   title="Debe tener exactamente 8 dígitos"
+                   oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,8);" placeholder="55555555">
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- DATOS PRODUCTO/SERVICIO -->
+      <div class="section-card">
+        <div class="section-title">
+          Datos del producto / servicio <span class="tag-pill">2</span>
+          <span class="line"></span>
+        </div>
+        <div class="form-grid-producto">
+          <div>
+            <label>¿Qué vas a publicar?</label>
+            <select name="id_tipo" id="tipo" required>
+              <option value="">-- Seleccione --</option>
+              {% for t in tipos %}
+                <option value="{{ t[0] }}">{{ t[1] }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div>
+            <label>Título</label>
+            <input name="titulo" required>
+          </div>
+          <div style="grid-column: 1 / -1;">
+            <label>Descripción</label>
+            <textarea name="descripcion" required></textarea>
+          </div>
+          <div>
+            <label>Precio</label>
+            <input type="number" step="0.01" name="precio" required>
+          </div>
+          <div>
+            <label>Moneda</label>
+            <div class="radio-inline">
+              <label class="money-option">
+                <input type="radio" name="moneda" value="Q" checked> Q
+              </label>
+              <label class="money-option">
+                <input type="radio" name="moneda" value="$"> $
+              </label>
+            </div>
+          </div>
+          <div class="row-two-cols" style="grid-column: 1 / -1;">
+            <div>
+              <label>Categoría</label>
+              <select name="id_categoria" id="categoria" required>
+                <option value="">-- Seleccione --</option>
+              </select>
+            </div>
+            <div>
+              <label>Subcategoría</label>
+              <select name="id_sub_categoria" id="subcategoria" required>
+                <option value="">-- Seleccione --</option>
+              </select>
+            </div>
+          </div>
+          <div class="row-two-cols" style="grid-column: 1 / -1; gap: 12px;">
+            <div>
+              <label>Marca</label>
+              <select name="id_marca" id="marca">
+                <option value="">-- Seleccione --</option>
+              </select>
+            </div>
+            <div id="estado-wrapper" style="display:none;">
+              <label>Estado</label>
+              <select name="id_estado" id="estado">
+                <option value="">-- Seleccione --</option>
+              </select>
+            </div>
+          </div>
+          <div style="grid-column: 1 / -1;">
+            <label>Imágenes (hasta 10)</label>
+            <input type="file" name="imagenes" id="imagenes" accept="image/*" multiple required>
+            <small>Puedes seleccionar varias a la vez.</small>
+            <p class="cover-hint">Selecciona la foto de tu portada:</p>
+            <div id="preview-container" class="img-preview-grid"></div>
+            <input type="hidden" name="portada_index" id="portada_index" value="">
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="link-back" href="/">Volver al listado</a>
+        <button type="submit" class="btn-primary">Publicar</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // datos enviados desde Flask
+    const allCats = {{ categorias|tojson|safe }};        // [id_categoria, nombre, id_tipo]
+    const allSubcats = {{ subcategorias|tojson|safe }};  // [id_sub_categoria, id_categoria, nombre]
+    const allMarcas = {{ marcas|tojson|safe }};          // [id_marca, marca, id_sub_categoria]
+    const allEstados = {{ estados|tojson|safe }};        // [id_estado, estado]
+
+    const tipoSelect = document.getElementById('tipo');
+    const catSelect = document.getElementById('categoria');
+    const subSelect = document.getElementById('subcategoria');
+
+    function renderCats(tipoId) {
+      catSelect.innerHTML = '<option value="">-- Seleccione --</option>';
+      subSelect.innerHTML = '<option value="">-- Seleccione --</option>';
+      if (!tipoId) return;
+      allCats.forEach(function(c) {
+        const id_cat = c[0];
+        const nombre = c[1];
+        const id_tipo = c[2];
+        if (id_tipo == tipoId) {
+          const opt = document.createElement('option');
+          opt.value = id_cat;
+          opt.textContent = nombre;
+          catSelect.appendChild(opt);
+        }
+      });
+    }
+
+    function renderSubcats(catId) {
+      subSelect.innerHTML = '<option value="">-- Seleccione --</option>';
+      if (!catId) return;
+      allSubcats.forEach(function(s) {
+        const id_sub = s[0];
+        const id_cat = s[1];
+        const nombre = s[2];
+        if (id_cat == catId) {
+          const opt = document.createElement('option');
+          opt.value = id_sub;
+          opt.textContent = nombre;
+          subSelect.appendChild(opt);
+        }
+      });
+    }
+
+    const marcaSelect = document.getElementById('marca');
+    const estadoWrapper = document.getElementById('estado-wrapper');
+    const estadoSelect = document.getElementById('estado');
+
+    function renderMarcas(subcatId) {
+      marcaSelect.innerHTML = '<option value="">-- Seleccione --</option>';
+      if (!subcatId) return;
+      allMarcas.forEach(function(m) {
+        const id_marca = m[0];
+        const nombre = m[1];
+        const id_sub = m[2];
+        if (id_sub == subcatId) {
+          const opt = document.createElement('option');
+          opt.value = id_marca;
+          opt.textContent = nombre;
+          marcaSelect.appendChild(opt);
+        }
+      });
+    }
+
+    // llenar estados una sola vez
+    function fillEstados() {
+      estadoSelect.innerHTML = '<option value="">-- Seleccione --</option>';
+      allEstados.forEach(function(e) {
+        const opt = document.createElement('option');
+        opt.value = e[0];
+        opt.textContent = e[1];
+        estadoSelect.appendChild(opt);
+      });
+    }
+    fillEstados();
+
+    function toggleEstadoByTipo() {
+      const selected = tipoSelect.options[tipoSelect.selectedIndex];
+      const label = selected ? selected.textContent.trim().toLowerCase() : '';
+      if (label === 'producto') {
+        // mostrar estado
+        estadoWrapper.style.display = 'block';
+        estadoSelect.required = true;
+        // habilitar marca
+        marcaSelect.disabled = false;
+        marcaSelect.required = true;
+      } else {
+        // ocultar estado
+        estadoWrapper.style.display = 'none';
+        estadoSelect.value = '';
+        estadoSelect.required = false;
+        // limpiar y deshabilitar marca
+        marcaSelect.value = '';
+        marcaSelect.disabled = true;
+        marcaSelect.required = false;
+      }
+    }
+
+    tipoSelect.addEventListener('change', function(e) {
+      renderCats(e.target.value);
+      toggleEstadoByTipo();
+    });
+
+    catSelect.addEventListener('change', function(e) {
+      renderSubcats(e.target.value);
+    });
+
+    subSelect.addEventListener('change', function(e) {
+      renderMarcas(e.target.value);
+    });
+
+    // inicial
+    toggleEstadoByTipo();
+
+    // preview de imagenes y seleccion de portada
+    const imgInput = document.getElementById('imagenes');
+    const preview = document.getElementById('preview-container');
+    const portadaInput = document.getElementById('portada_index');
+
+    if (imgInput) {
+      imgInput.addEventListener('change', function(e){
+        const files = Array.from(e.target.files);
+        preview.innerHTML = '';
+        files.forEach((file, idx) => {
+          const url = URL.createObjectURL(file);
+          const div = document.createElement('div');
+          div.className = 'img-thumb';
+          div.innerHTML = `<span class="cover-badge">Portada</span><img src="${url}" alt="imagen ${idx+1}">`;
+          div.addEventListener('click', () => {
+            // marcar portada
+            document.querySelectorAll('.img-thumb').forEach(t => t.classList.remove('cover'));
+            div.classList.add('cover');
+            portadaInput.value = idx;
+          });
+          // primera imagen por defecto como portada
+          if (idx === 0) {
+            div.classList.add('cover');
+            portadaInput.value = 0;
+          }
+          preview.appendChild(div);
+        });
+      });
+    }
+
+  </script>
+</body>
+</html>
