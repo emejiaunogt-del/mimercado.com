@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Admin</title>
+  <style>
+    body{font-family:Arial;background:#f3f4f6;padding:20px;}
+    .card{background:#fff;max-width:600px;margin:0 auto;padding:20px;border-radius:10px;}
+    a.btn{display:block;background:#2563eb;color:#fff;text-decoration:none;padding:10px 12px;border-radius:6px;margin-bottom:10px;}
+    .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="top">
+      <h2>Configuración de la plataforma</h2>
+      <span>Hola, {{usuario}}</span>
+    </div>
+    <a class="btn" href="/admin/categorias">1. Categorías</a>
+    <a class="btn" href="/admin/subcategorias">2. Subcategorías</a>
+    <a class="btn" href="/admin/tipos">3. Tipos</a>
+    <a class="btn" href="/admin/marcas">4. Marcas</a>
+    <a class="btn" href="/admin/estados">5. Estados</a>
+    <a class="btn" href="/admin/publicaciones">6. Ver publicaciones</a>
+    <a href="/logout" style="display:block;margin-top:10px;">Cerrar sesión</a>
+  </div>
+</body>
+</html>

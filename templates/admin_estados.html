@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Estados</title>
+  <style>
+    body{font-family:Arial;background:#f3f4f6;padding:20px;}
+    .card{background:#fff;max-width:430px;margin:0 auto;padding:20px;border-radius:10px;}
+    table{width:100%;border-collapse:collapse;margin-top:14px;}
+    th,td{padding:8px;border-bottom:1px solid #e5e7eb;text-align:left;}
+    label{display:block;margin-top:10px;font-weight:bold;}
+    input{width:100%;padding:6px;border:1px solid #d1d5db;border-radius:6px;}
+    button{margin-top:10px;background:#2563eb;color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer;}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Estados</h2>
+    <form method="post">
+      <label>Nombre del estado</label>
+      <input name="estado" required placeholder="Nuevo / Usado / ...">
+      <button type="submit">Guardar</button>
+    </form>
+
+    <h3 style="margin-top:16px;">Existentes</h3>
+    <table>
+      <tr><th>ID</th><th>Estado</th></tr>
+      {% for e in estados %}
+        <tr><td>{{e[0]}}</td><td>{{e[1]}}</td></tr>
+      {% endfor %}
+    </table>
+    <p><a href="/admin">Volver</a></p>
+  </div>
+</body>
+</html>

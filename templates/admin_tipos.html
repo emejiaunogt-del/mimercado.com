@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="UTF-8"><title>Tipos</title>
+<style>
+body{font-family:Arial;background:#f3f4f6;padding:20px;}
+.card{background:#fff;max-width:450px;margin:0 auto;padding:20px;border-radius:10px;}
+table{width:100%;border-collapse:collapse;margin-top:10px;}
+th,td{padding:8px;border-bottom:1px solid #e5e7eb;text-align:left;}
+label{display:block;margin-top:10px;font-weight:bold;}
+input{width:100%;padding:6px;border:1px solid #d1d5db;border-radius:6px;}
+button{margin-top:10px;background:#2563eb;color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer;}
+</style></head><body>
+<div class="card">
+  <h2>Tipos</h2>
+  <form method="post">
+    <label>Nombre del tipo</label>
+    <input name="tipo" required>
+    <button type="submit">Guardar</button>
+  </form>
+
+  <h3 style="margin-top:20px;">Existentes</h3>
+  <table>
+    <tr><th>ID</th><th>Tipo</th></tr>
+    {% for t in tipos %}
+      <tr><td>{{t[0]}}</td><td>{{t[1]}}</td></tr>
+    {% endfor %}
+  </table>
+  <p><a href="/admin">Volver</a></p>
+</div>
+</body></html>

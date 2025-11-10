@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ pub[1] }}</title>
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background: #eef1f4;
+      padding: 24px;
+    }
+    .top-row{
+      max-width: 1100px;
+      margin: 0 auto 14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .top-link a{color:#2563eb;text-decoration:none;font-size:13px;}
+    .share-box button{
+      border:none;
+      background:#fff;
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:12px;
+      cursor:pointer;
+      margin-left:6px;
+      display:inline-flex;
+      gap:4px;
+      align-items:center;
+    }
+    .container{
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+    }
+    .gallery{
+      background:#fff;
+      border-radius:12px;
+      padding:14px;
+      min-height:420px;
+    }
+    .main-img{
+      width:100%;
+      height:360px;
+      border-radius:10px;
+      background:#f3f4f6;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      margin-bottom:12px;
+    }
+    .main-img img{
+      max-width:100%;
+      max-height:100%;
+      object-fit:contain;
+    }
+    .thumbs{
+      display:flex;
+      gap:10px;
+      overflow-x:auto;
+      padding-bottom:4px;
+    }
+    .thumbs img{
+      width:85px;
+      height:85px;
+      object-fit:cover;
+      border-radius:8px;
+      background:#e5e7eb;
+      cursor:pointer;
+      flex:0 0 auto;
+    }
+    .info{
+      background:#fff;
+      border-radius:12px;
+      padding:16px 18px 20px;
+    }
+    .title{
+      font-size:20px;
+      font-weight:600;
+      margin-bottom:4px;
+    }
+    .cat{
+      color:#6b7280;
+      font-size:13px;
+      margin-bottom:18px;
+    }
+    .price{
+      font-size:22px;
+      font-weight:700;
+      margin-bottom:16px;
+    }
+    .badge{
+      background:#e5e7eb;
+      border-radius:999px;
+      padding:3px 10px;
+      font-size:12px;
+      display:inline-block;
+      margin-right:6px;
+      margin-bottom:6px;
+    }
+    .section{
+      background:#fff;
+      border-radius:12px;
+      padding:14px 16px;
+      margin-top:14px;
+    }
+    .sec-title{
+      font-weight:600;
+      margin-bottom:10px;
+    }
+    .vendor-row{
+      display:flex;
+      gap:10px;
+      margin-bottom:6px;
+    }
+    .label{
+      width:80px;
+      color:#6b7280;
+      font-size:13px;
+    }
+    @media (max-width: 900px){
+      .container{
+        grid-template-columns: 1fr;
+      }
+      .gallery{min-height:0;}
+      .main-img{height:320px;}
+    }
+  
+    .logo-title{display:flex;align-items:center;gap:10px;}
+    .logo-title img{height:45px;}
+    
+  
+    .header-bar{
+      max-width:1100px;
+      margin:0 auto 18px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .header-logo{
+      height:54px;
+    }
+
+  
+
+  </style>
+</head>
+<body>
+  <div class="header-bar">
+    <a href="/">
+      <img src="{{ url_for('static', filename='img/mimercado-logo.png') }}" alt="MiMercado.com" class="header-logo">
+    </a>
+  </div>
+
+  <div class="top-row">
+    <div class="top-link"><a href="/"></a></div>
+    <div class="share-box">
+    </div>
+  </div>
+  <div class="container">
+    <div>
+      <div class="gallery">
+        <div class="main-img" id="main-img">
+          {% if imagenes %}
+            <img src="{{ imagenes[0] }}" id="bigimg">
+          {% else %}
+            <span style="color:#9ca3af;">Sin imagen</span>
+          {% endif %}
+        </div>
+        {% if imagenes %}
+        <div class="thumbs">
+          {% for img in imagenes %}
+            <img src="{{ img }}" onclick="document.getElementById('bigimg').src='{{ img }}'">
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      <div class="section" style="margin-top:14px;">
+        <div class="sec-title">Descripción</div>
+        <p style="white-space:pre-line;font-size:13px;line-height:1.4;">{{ pub[2] or 'Sin descripción' }}</p>
+      </div>
+    </div>
+    <div>
+      <div class="info">
+        <div class="title">{{ pub[1] }}</div>
+        <div class="cat">
+          {% if pub[6] %}{{ pub[6] }}{% if pub[7] %} / {{ pub[7] }}{% endif %}{% endif %}
+        </div>
+        <div class="price">
+          {{ pub[4] }} {{ "{:,.2f}".format(pub[3] or 0) }}
+        </div>
+        {% if pub[8] %}
+          <span class="badge">{{ pub[8] }}</span>
+        {% endif %}
+        {% if pub[13] %}
+          <span class="badge">Marca: {{ pub[13] }}</span>
+        {% endif %}
+        {% if pub[14] %}
+          <span class="badge">Estado: {{ pub[14] }}</span>
+        {% endif %}
+      </div>
+      <div class="section">
+        <div class="sec-title">Datos del vendedor</div>
+        <div class="vendor-row">
+          <div class="label">Nombre</div>
+          <div>{{ (pub[9] or '') ~ ' ' ~ (pub[10] or '') }}</div>
+        </div>
+        <div class="vendor-row">
+          <div class="label">Correo</div>
+          <div>{{ pub[11] or '-' }}</div>
+        </div>
+        <div class="vendor-row">
+          <div class="label">Celular</div>
+          <div>
+            {% set tel = pub[12] or '' %}
+            {% set titulo = pub[1] or '' %}
+            {% if tel %}
+            <a href="#" onclick="openWhatsapp('{{ tel|escape }}', '{{ titulo|escape }}');return false;">{{ tel }}</a>
+            {% else %}
+            -
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function shareWhatsapp(){
+      const url = window.location.href;
+      const text = encodeURIComponent("Mira esta publicación: " + url);
+      window.open("https://wa.me/?text=" + text, "_blank");
+    }
+    function copyLink(){
+      const url = window.location.href;
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(url).then(function(){
+          alert("Enlace copiado");
+        });
+      } else {
+        // fallback
+        const el = document.createElement("input");
+        el.value = url;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand("copy");
+        document.body.removeChild(el);
+        alert("Enlace copiado");
+      }
+    }
+  </script>
+
+
+  <script>
+    function openWhatsapp(num, titulo){
+      if(!num){ return; }
+      var clean = num.toString().replace(/[^0-9+]/g, '');
+      if(clean.charAt(0) !== '+' && clean.length <= 8){
+        clean = '502' + clean;
+      }
+      var enlace = window.location.href;
+      var mensaje = 'Hola, vi tu publicación de ' + titulo + ' en mimercado.com ' + enlace + ' y me interesa.';
+      var url = 'https://wa.me/' + clean + '?text=' + encodeURIComponent(mensaje);
+      window.open(url, '_blank');
+    }
+  </script>
+
+
+</body>
+</html>

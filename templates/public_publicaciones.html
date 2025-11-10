@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Publicaciones</title>
+  <style>
+    .logo-block{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:240px;
+    }
+    .logo-img-full{
+      height:56px;
+      object-fit:contain;
+    }
+
+    body{
+      font-family: Arial, sans-serif;
+      background: #dfefff;
+      padding: 20px 26px 40px;
+    }
+    .header-bar{
+      background:#ffffff;
+      border-radius:14px;
+      padding:10px 16px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      box-shadow:0 4px 16px rgba(15,23,42,0.04);
+      margin-bottom:16px;
+    }
+    .logo-block{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:220px;
+    }
+    .logo-img{
+      height:58px;
+    }
+    .brand-name{
+      font-weight:700;
+      font-size:18px;
+      color:#0f172a;
+      text-transform:uppercase;
+      letter-spacing:0.04em;
+    }
+    .search-block{
+      flex:1;
+      display:flex;
+      gap:8px;
+    }
+    .search-block input{
+      flex:1;
+      padding:10px 12px;
+      border-radius:9999px;
+      border:1px solid #cbd5e1;
+      font-size:14px;
+      outline:none;
+      background:#f8fafc;
+    }
+    .search-block input:focus{
+      border-color:#38bdf8;
+      background:#fff;
+    }
+    .search-block button{
+      background:#38bdf8;
+      border:none;
+      color:#fff;
+      padding:9px 18px;
+      border-radius:9999px;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .actions-block{
+      display:flex;
+      gap:10px;
+    }
+    .act-btn{
+      text-decoration:none;
+      padding:8px 14px;
+      border-radius:9999px;
+      font-size:13px;
+    }
+    .act-btn.primary{
+      background:#0f172a;
+      color:#fff;
+    }
+    .act-btn.secondary{
+      background:#e2ecff;
+      color:#0f172a;
+    }
+
+    body{
+      font-family: Arial, sans-serif;
+      background: #eef1f4;
+      padding: 20px 26px 40px;
+    }
+    .top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:14px;
+    }
+    .top h1{font-size:26px;margin:0;color:#111827;}
+    .right-top a{
+      background:#0d9488;
+      color:#fff;
+      padding:7px 12px;
+      border-radius:8px;
+      text-decoration:none;
+      margin-left:8px;
+      font-size:13px;
+    }
+    .search-bar{
+      margin-bottom:12px;
+    }
+    .search-bar input{
+      width:100%;
+      padding:9px 12px;
+      border:1px solid #d1d5db;
+      border-radius:999px;
+      font-size:13px;
+      background:#fff;
+    }
+    .filters-tabs{
+      display:flex;
+      gap:8px;
+      margin-bottom:14px;
+    }
+    .filters-tabs button{
+      border:none;
+      background:#fff;
+      padding:6px 14px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:600;
+      color:#1f2937;
+    }
+    .filters-tabs button.active{
+      background:#1d4ed8;
+      color:#fff;
+    }
+    .main-flex{
+      display:flex;
+      gap:16px;
+    }
+    .side-filter{
+      width:220px;
+    }
+    .filter-card{
+      background:#fff;
+      border-radius:12px;
+      padding:12px;
+      margin-bottom:10px;
+    }
+    .filter-card h3{
+      margin:0 0 8px 0;
+      font-size:14px;
+      color:#111827;
+    }
+    .filter-card select{
+      width:100%;
+      padding:6px 8px;
+      border-radius:7px;
+      border:1px solid #d1d5db;
+      font-size:13px;
+    }
+    .cards{
+      flex:1;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap:16px;
+    }
+    .card{
+      background:#fff;
+      border-radius:16px;
+      padding:0;
+      overflow:hidden;
+      border:1px solid rgba(17,24,39,0.02);
+      display:flex;
+      flex-direction:column;
+      min-height:190px;
+    }
+    .img-box{
+      height:95px;
+      background:#f3f4f6;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      margin-bottom:10px;
+    }
+    .img-box img{
+      max-height:100%;
+      max-width:100%;
+      object-fit:contain;
+    }
+    .card-body{
+      padding:0 14px 14px;
+      flex:1;
+    }
+    .title{
+      font-weight:600;
+      font-size:14px;
+      margin-bottom:4px;
+      color:#111827;
+    }
+    .title a{color:inherit;text-decoration:none;}
+    .category{
+      font-size:11px;
+      color:#6b7280;
+      margin-bottom:10px;
+    }
+    .price{
+      font-weight:700;
+      font-size:14px;
+      margin-bottom:4px;
+    }
+    .extra{
+      font-size:11px;
+      color:#6b7280;
+    }
+    @media (max-width: 900px){
+      .main-flex{
+        flex-direction:column;
+      }
+      .side-filter{
+        width:100%;
+        display:flex;
+        gap:10px;
+      }
+      .filter-card{
+        flex:1;
+      }
+    }
+  
+    .logo-title{display:flex;align-items:center;gap:10px;}
+    .logo-title img{height:45px;}
+    
+  
+    .filters-tabs{
+      margin:14px 0 12px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .filters-tabs .tab-btn{
+      background:#ffffff;
+      border:1px solid rgba(15,23,42,0.06);
+      padding:6px 16px 7px;
+      border-radius:9999px;
+      cursor:pointer;
+      font-weight:600;
+      color:#0f172a;
+      box-shadow:0 1px 3px rgba(15,23,42,0.04);
+      transition:all .15s ease-in-out;
+    }
+    .filters-tabs .tab-btn:hover{
+      background:#e7f4ff;
+      border-color:rgba(56,189,248,0.4);
+    }
+    .filters-tabs .tab-btn.active{
+      background:#0f172a;
+      color:#fff;
+      border-color:#0f172a;
+      box-shadow:0 2px 6px rgba(15,23,42,0.16);
+    }
+
+  </style>
+</head>
+<body>
+  
+  <div class="header-bar">
+    <div class="logo-block">
+      <img src="{{ url_for('static', filename='img/mimercado-logo.png') }}" alt="MiMercado.com" class="logo-img-full">
+    </div>
+    <div class="search-block">
+      <input type="text" id="searchInput" placeholder="Buscar en mimercado..." />
+      <button type="button" onclick="document.getElementById('searchInput').focus();">Buscar</button>
+    </div>
+    <div class="actions-block">
+      <a href="/login" class="act-btn secondary">Login</a>
+      <a href="/publicar" class="act-btn primary">Nueva publicación</a>
+    </div>
+  </div>
+
+  <div class="filters-tabs">
+    <button class="tab-btn active" data-filter="todos">Todos</button>
+    <button class="tab-btn" data-filter="producto">Productos</button>
+    <button class="tab-btn" data-filter="servicio">Servicios</button>
+  </div>
+<div class="main-flex">
+    <div class="side-filter" id="sideFilter">
+      <div class="filter-card">
+        <h3>Categoría</h3>
+        <select id="fCategoria">
+          <option value="">Todas</option>
+          {% for c in categorias %}
+            <option value="{{ c[0] }}" data-tipo="{{ c[2] }}">{{ c[1] }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="filter-card">
+        <h3>Subcategoría</h3>
+        <select id="fSubcategoria" disabled>
+          <option value="">Todas</option>
+        </select>
+      </div>
+      <div class="filter-card" id="marcaCard">
+        <h3>Marca</h3>
+        <select id="fMarca" disabled>
+          <option value="">Todas</option>
+          {% for m in marcas %}
+            <option value="{{ m[0] }}">{{ m[1] }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="filter-card" id="estadoCard">
+        <h3>Estado</h3>
+        <select id="fEstado" disabled>
+          <option value="">Todos</option>
+          {% for e in estados %}
+            <option value="{{ e[0] }}">{{ e[1] }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="filter-card">
+        <button id="btnClear" style="width:100%;background:#1f2937;color:#fff;border:none;padding:7px 0;border-radius:7px;font-size:12px;cursor:pointer;">Limpiar filtros</button>
+      </div>
+    </div>
+    <div class="cards" id="cards">
+      {% for p in publicaciones %}
+        <div class="card"
+             data-tipo="{{ p[8]|lower if p[8] else '' }}"
+             data-cat="{{ p[10] }}"
+             data-sub="{{ p[11] }}"
+             data-marca="{{ p[12] }}" data-estado="{{ p[14] }}">
+          <div class="img-box">
+            {% if img_map.get(p[0]) %}
+              <img src="{{ img_map.get(p[0]) }}">
+            {% else %}
+              <span style="font-size:11px;color:#9ca3af;">Sin imagen</span>
+            {% endif %}
+          </div>
+          <div class="card-body">
+            <div class="title"><a href="/publicacion/{{ p[0] }}">{{ p[1] }}</a></div>
+            <div class="category">
+              {% if p[6] %}{{ p[6] }}{% if p[7] %} / {{ p[7] }}{% endif %}{% endif %}
+              {% if p[9] %}<br><span style="font-size:10px;color:#9ca3af;">{{ p[9] }}</span>{% endif %}
+            </div>
+            <div class="price">
+              {{ p[4] }} {{ "{:,.2f}".format(p[3] or 0) }}
+            </div>
+            <div class="extra">
+              {% if p[8] %}{{ p[8] }}{% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const cards = Array.from(document.querySelectorAll('.card'));
+    const filterBtns = document.querySelectorAll('.tab-btn');
+
+    const allSubcats = {{ subcategorias|tojson|safe }};
+    const fCat = document.getElementById('fCategoria');
+    const fSub = document.getElementById('fSubcategoria');
+    const fMarca = document.getElementById('fMarca');
+    const fEstado = document.getElementById('fEstado');
+    const marcaCard = document.getElementById('marcaCard');
+    const estadoCard = document.getElementById('estadoCard');
+    const btnClear = document.getElementById('btnClear');
+
+    let activeFilter = 'todos';
+
+    function applyFilters(){
+      const term = searchInput.value.trim().toLowerCase();
+      const catVal = fCat.value;
+      const subVal = fSub.value;
+      const marcaVal = fMarca.value;
+      const estadoVal = fEstado.value;
+
+      cards.forEach(card => {
+        const titleEl = card.querySelector('.title');
+        const catEl = card.querySelector('.category');
+        const title = titleEl ? titleEl.innerText.toLowerCase() : '';
+        const catText = catEl ? catEl.innerText.toLowerCase() : '';
+
+        const tipo = card.dataset.tipo || '';
+        const cat = card.dataset.cat || '';
+        const sub = card.dataset.sub || '';
+        const marca = card.dataset.marca || '';
+
+        let visible = true;
+
+        if (term){
+          const matches = title.includes(term) || catText.includes(term);
+          if (!matches){
+            visible = false;
+          }
+        }
+
+        if (activeFilter === 'producto' && tipo !== 'producto'){
+          visible = false;
+        }
+        if (activeFilter === 'servicio' && tipo !== 'servicio'){
+          visible = false;
+        }
+
+        if (catVal && cat !== catVal){
+          visible = false;
+        }
+        if (subVal && sub !== subVal){
+          visible = false;
+        }
+        if (marcaVal && marca !== marcaVal){
+          visible = false;
+        }
+        if (estadoVal){
+          const cardEstado = card.dataset.estado || '';
+          if (!cardEstado || cardEstado === '0' || cardEstado !== estadoVal){
+            visible = false;
+          }
+        }
+
+        card.style.display = visible ? '' : 'none';
+      });
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+
+
+    // determinar id_tipo de producto y servicio
+    const tiposAll = {{ tipos|tojson|safe }};
+    let tipoProductoId = null;
+    let tipoServicioId = null;
+    tiposAll.forEach(t => {
+      const name = (t[1] || "").toLowerCase();
+      if (name.includes("producto")) tipoProductoId = t[0];
+      if (name.includes("servicio")) tipoServicioId = t[0];
+    });
+
+    function filterCategoriesByTipo(){
+      const opts = Array.from(fCat.options);
+      const showFor = (activeFilter === 'producto') ? tipoProductoId :
+                      (activeFilter === 'servicio') ? tipoServicioId : null;
+      opts.forEach((opt, idx) => {
+        if (idx === 0){ // "Todas"
+          opt.style.display = '';
+          return;
+        }
+        const catTipo = opt.dataset.tipo ? parseInt(opt.dataset.tipo) : 0;
+        if (showFor && catTipo && catTipo !== showFor){
+          opt.style.display = 'none';
+          if (fCat.value === opt.value){
+            fCat.value = '';
+          }
+        } else {
+          opt.style.display = '';
+        }
+      });
+      // también resetear subcategoría cuando cambiamos de tipo
+      fSub.innerHTML = '<option value="">Todas</option>';
+      fSub.disabled = true;
+    }
+
+    const sideFilter = document.getElementById('sideFilter');
+    function toggleSidebar(){
+      if (activeFilter === 'producto' || activeFilter === 'servicio'){
+        sideFilter.style.display = '';
+        filterCategoriesByTipo();
+        // estado solo para productos
+        if (activeFilter === 'producto') {
+          refreshMarcaEnabled();
+          estadoCard.style.display = '';
+          fEstado.disabled = false;
+          fEstado.value = '';
+          marcaCard.style.display = '';
+          fMarca.disabled = false;
+        } else {
+          estadoCard.style.display = 'none';
+          fEstado.value = '';
+          fEstado.disabled = true;
+          // en servicios ocultamos marca
+          marcaCard.style.display = 'none';
+          fMarca.value = '';
+          fMarca.disabled = true;
+        }
+      } else {
+        sideFilter.style.display = 'none';
+        // reset selects when oculto
+        fCat.value = '';
+        fSub.innerHTML = '<option value="">Todas</option>';
+        fSub.disabled = true;
+        // reset marcas
+        const marcasAll = {{ marcas|tojson|safe }};
+        fMarca.innerHTML = '<option value="">Todas</option>';
+        marcasAll.forEach(function(m){
+          const opt = document.createElement('option');
+          opt.value = m[0];
+          opt.textContent = m[1];
+          fMarca.appendChild(opt);
+        });
+        fMarca.disabled = true;
+      }
+      applyFilters();
+    }
+    // ocultar al inicio
+    document.getElementById('sideFilter').style.display = 'none';
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
+        toggleSidebar();
+      });
+    });
+
+    // llenar subcategorías cuando elijo categoría
+    fCat.addEventListener('change', function(){
+      const val = this.value;
+      fSub.innerHTML = '<option value="">Todas</option>';
+      if (val){
+        allSubcats.forEach(function(s){
+          if (s[1] == val){
+            const opt = document.createElement('option');
+            opt.value = s[0];
+            opt.textContent = s[2];
+            fSub.appendChild(opt);
+          }
+        });
+        fSub.disabled = false;
+      } else {
+        fSub.disabled = true;
+        fSub.value = '';
+      }
+      // al cambiar categoría, refrescamos el estado de marca y filtramos
+      if (typeof refreshMarcaEnabled === 'function'){
+        refreshMarcaEnabled();
+      }
+      applyFilters();
+    });
+
+    fSub.addEventListener('change', function(){
+      // solo habilitamos marca si: producto + hay categoría + hay subcategoría
+      const subVal = this.value;
+      const isProducto = (activeFilter === 'producto');
+      const hasCat = fCat.value !== '';
+      if (subVal && isProducto && hasCat){
+        const marcasAll = {{ marcas|tojson|safe }};
+        fMarca.innerHTML = '<option value="">Todas</option>';
+        marcasAll.forEach(function(m){
+          const id_marca = m[0];
+          const nombre = m[1];
+          const id_sub = m[2];
+          if (!id_sub || id_sub == subVal){
+            const opt = document.createElement('option');
+            opt.value = id_marca;
+            opt.textContent = nombre;
+            fMarca.appendChild(opt);
+          }
+        });
+      } else {
+        fMarca.innerHTML = '<option value="">Todas</option>';
+      }
+      if (typeof refreshMarcaEnabled === 'function'){
+        refreshMarcaEnabled();
+      }
+      applyFilters();
+    });
+
+    fMarca.addEventListener('change', applyFilters);
+    // habilitar/deshabilitar marca según categoría y subcategoría
+    function refreshMarcaEnabled(){
+      const isProducto = (activeFilter === 'producto');
+      const hasCat = fCat.value !== '';
+      const hasSub = fSub.value !== '';
+      if (isProducto && hasCat && hasSub){
+        if (marcaCard) marcaCard.style.display = '';
+        fMarca.disabled = false;
+      } else {
+        // limpiar, dejar solo "Todas" y deshabilitar
+        fMarca.innerHTML = '<option value="">Todas</option>';
+        fMarca.value = '';
+        fMarca.disabled = true;
+      }
+    }
+    fCat.addEventListener('change', refreshMarcaEnabled);
+    fSub.addEventListener('change', refreshMarcaEnabled);
+    // también al iniciar
+    refreshMarcaEnabled();
+
+    fEstado.addEventListener('change', applyFilters);
+
+    btnClear.addEventListener('click', function(e){
+      e.preventDefault();
+      fCat.value = '';
+      fSub.innerHTML = '<option value="">Todas</option>';
+      fSub.disabled = true;
+
+      const marcasAll = {{ marcas|tojson|safe }};
+      fMarca.innerHTML = '<option value="">Todas</option>';
+      marcasAll.forEach(function(m){
+        const opt = document.createElement('option');
+        opt.value = m[0];
+        opt.textContent = m[1];
+        fMarca.appendChild(opt);
+      });
+      fMarca.disabled = true;
+
+      fEstado.value = '';
+      applyFilters();
+    });
+
+  
+    // mover "Otros" al final en los selects del sidebar
+    function moveOtrosToEnd(selId){
+      var el = document.getElementById(selId);
+      if(!el) return;
+      var opts = Array.from(el.options);
+      var otros = opts.find(o => o.text.trim().toLowerCase() === "otros");
+      if(otros){
+        el.removeChild(otros);
+        el.appendChild(otros);
+      }
+    }
+    moveOtrosToEnd("fCategoria");
+    moveOtrosToEnd("fSubcategoria");
+    moveOtrosToEnd("fMarca");
+    moveOtrosToEnd("fEstado");
+
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const fCat = document.getElementById('fCategoria');
+  const fSub = document.getElementById('fSubcategoria');
+  const fMarca = document.getElementById('fMarca');
+  const marcaCard = document.getElementById('marcaCard');
+  const filterBtns = document.querySelectorAll('.filters-tabs button');
+  let activeFilter = 'todos';
+
+  filterBtns.forEach(btn => {
+    if (btn.classList.contains('active')) {
+      activeFilter = btn.dataset.filter;
+    }
+    btn.addEventListener('click', function(){
+      activeFilter = this.dataset.filter;
+      refreshMarca();
+    });
+  });
+
+  function refreshMarca(){
+    const isProducto = (activeFilter === 'producto');
+    const hasCat = fCat && fCat.value !== '';
+    const hasSub = fSub && fSub.value !== '';
+    if (isProducto && hasCat && hasSub){
+      if (marcaCard) marcaCard.style.display = '';
+      fMarca.disabled = false;
+    } else {
+      if (activeFilter !== 'producto' && marcaCard){
+        marcaCard.style.display = 'none';
+      }
+      fMarca.innerHTML = '<option value="">Todas</option>';
+      fMarca.value = '';
+      fMarca.disabled = true;
+    }
+  }
+
+  if (fCat) fCat.addEventListener('change', refreshMarca);
+  if (fSub) fSub.addEventListener('change', refreshMarca);
+
+  
+  
+    });
+  });
+// iniciar
+  refreshMarca();
+});
+</script>
+
+</body>
+</html>

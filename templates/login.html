@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body{font-family:Arial;background:#f3f4f6;padding:20px;}
+    .card{background:#fff;max-width:380px;margin:40px auto;padding:20px 24px;border-radius:12px;}
+    label{display:block;margin-top:10px;font-weight:bold;}
+    input{padding:8px;border:1px solid #d1d5db;border-radius:6px;}
+    .password-row{display:flex;gap:8px;align-items:center;margin-top:6px;}
+    .password-row input{flex:1;}
+    .eye-btn{width:34px;height:34px;border:none;border-radius:9999px;background:#e5edff;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+    .eye-btn svg{width:16px;height:16px;}
+    .submit-btn{margin-top:16px;background:#2563eb;color:#fff;border:none;padding:10px 16px;border-radius:6px;cursor:pointer;width:100%;}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Iniciar sesión</h2>
+    <form method="post">
+      <label>Usuario</label>
+      <input name="usuario" required style="width:100%;">
+      <label>Contraseña</label>
+      <div class="password-row">
+        <input id="password" type="password" name="password" required>
+        <button type="button" class="eye-btn" onclick="togglePassword()">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 5C7 5 3 9.5 3 12s4 7 9 7 9-4.5 9-7-4-7-9-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" fill="#1f3c88"/>
+            <circle cx="12" cy="12" r="2" fill="#fff"/>
+          </svg>
+        </button>
+      </div>
+      <button class="submit-btn" type="submit">Entrar</button>
+    </form>
+    <p style="margin-top:10px;"><a href="/">Volver</a></p>
+  </div>
+  <script>
+    function togglePassword(){
+      const input = document.getElementById('password');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+  </script>
+</body>
+</html>

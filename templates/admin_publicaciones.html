@@ -1,0 +1,48 @@
+<!doctype html><html><head><meta charset="UTF-8"><title>Publicaciones</title>
+<style>
+body{font-family:Arial;background:#f3f4f6;padding:20px;}
+table{width:100%;background:#fff;border-collapse:collapse;}
+th,td{padding:8px;border-bottom:1px solid #e5e7eb;text-align:left;vertical-align:middle;}
+th{background:#e5e7eb;}
+img{max-width:60px;border-radius:6px;}
+.actions{display:flex;gap:6px;}
+.btn-act{
+  width:30px;height:30px;border:none;border-radius:6px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;color:#fff;
+}
+.btn-edit{background:#1d4ed8;}
+.btn-view{background:#10b981;}
+.btn-del{background:#ef4444;}
+.btn-act a{color:inherit;text-decoration:none;display:flex;align-items:center;justify-content:center;width:100%;height:100%;}
+</style></head><body>
+<h2>Publicaciones</h2>
+<table>
+  <tr><th>ID</th><th>Img</th><th>Título</th><th>Tipo</th><th>Categoría</th><th>Precio</th><th>Creada</th><th>Acciones</th></tr>
+  {% for p in publicaciones %}
+  <tr>
+    <td>{{p[0]}}</td>
+    <td>{% if img_map.get(p[0]) %}<img src="{{img_map.get(p[0])}}">{% endif %}</td>
+    <td>{{p[1]}}</td>
+    <td>{{p[8]}}</td>
+    <td>{{p[6]}}{% if p[7] %} / {{p[7]}}{% endif %}</td>
+    <td>{{p[4]}} {{p[3]}}</td>
+    <td>{{p[5]}}</td>
+    <td>
+      <div class="actions">
+        <button class="btn-act btn-edit" title="Editar">
+          <a href="/admin/publicaciones/{{p[0]}}/editar">✏️</a>
+        </button>
+        <button class="btn-act btn-view" title="Ver">
+          <a href="/publicacion/{{p[0]}}">👁️</a>
+        </button>
+        <button class="btn-act btn-del" title="Eliminar" onclick="if(confirm('¿Eliminar publicación?')){window.location='/admin/publicaciones/{{p[0]}}/eliminar';}">
+          🗑️
+        </button>
+      </div>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+<p><a href="/admin">Volver</a></p>
+</body></html>
