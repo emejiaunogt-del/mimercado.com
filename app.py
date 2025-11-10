@@ -146,6 +146,9 @@ def index():
 @app.route("/publicacion/<int:pub_id>")
 def publicacion_detalle(pub_id):
     conn = get_conn(); cur = conn.cursor()
+    # contar visita
+    cur.execute("UPDATE public.publicaciones SET visitas = COALESCE(visitas,0) + 1 WHERE id_publicacion = %s", (pub_id,))
+    conn.commit()
     cur.execute("""SELECT p.id_publicacion,
                           p.titulo,
                           COALESCE(p.descripcion,''),
@@ -381,7 +384,8 @@ def admin_publicaciones():
                            p.creado_en,
                            c.nombre,
                            s.nombre,
-                           t.tipo
+                           t.tipo,
+                           COALESCE(p.visitas,0)
                     FROM public.publicaciones p
                     LEFT JOIN public.categoria c ON p.id_categoria=c.id_categoria
                     LEFT JOIN public.sub_categoria s ON p.id_sub_categoria=s.id_sub_categoria
